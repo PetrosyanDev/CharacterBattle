@@ -1,34 +1,47 @@
-import pygame
+from entities.character import Character
+from entities.ability import Ability
+from characters import Zapdos, Charizard
 
 
-def main():
+def perform_attack(attacker: Character, defender: Character, ability: Ability):
+    damage = ability.calculate_damage(attacker, defender)
+    defender.take_damage(damage)
+    return damage
 
-	pygame.init()
-	SCREEN = (1280, 720)
-	win = pygame.display.set_mode(SCREEN)
+# def main():
 
-	clock = pygame.time.Clock()
-	FPS = 60
+# 	pygame.init()
+# 	SCREEN = (1280, 720)
+# 	win = pygame.display.set_mode(SCREEN)
 
-	# game loop
-	running = True
-	while running:
+# 	clock = pygame.time.Clock()
+# 	FPS = 60
 
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				running = False
-			elif event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_ESCAPE:
-					running = False
+# 	# game loop
+# 	running = True
+# 	while running:
 
-		clock.tick(FPS)
-		pygame.display.update()
+# 		for event in pygame.event.get():
+# 			if event.type == pygame.QUIT:
+# 				running = False
+# 			elif event.type == pygame.KEYDOWN:
+# 				if event.key == pygame.K_ESCAPE:
+# 					running = False
 
-	pygame.quit()
+# 		clock.tick(FPS)
+# 		pygame.display.update()
+
+# 	pygame.quit()
+
+# if __name__ == "__main__":
+# 	main()
 
 
+a = Zapdos
+b = Charizard
 
-
-
-if __name__ == "__main__":
-	main()
+print(a.current_hp)
+print(b.current_hp)
+perform_attack(a, b, a.abilities[0])
+print(a.current_hp)
+print(b.current_hp)

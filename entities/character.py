@@ -1,3 +1,6 @@
+from .ability import Ability
+
+
 class Character:
     def __init__(self, name, elements, max_hp, atk, defense, sp_atk, sp_def):
         self.name = name  # e.g. "Zapdos"
@@ -17,8 +20,5 @@ class Character:
     def is_defeated(self):
         return self.current_hp <= 0
 
-    def add_ability(self, ability):
+    def add_ability(self, ability: Ability):
         self.abilities.append(ability)
-
-Zapdos = Character(name="Zapdos", elements=["ELECTRIC", "FLYING"],max_hp=268, atk=185,  defense=178,sp_atk=240, sp_def=185)
-print(Zapdos.is_defeated())
