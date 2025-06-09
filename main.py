@@ -1,6 +1,7 @@
 import pygame
 from utils import fonts
 from screens.welcome import Welcome
+from screens.selection import CharacterSelection
 from screens.game import Game
 import entity
 
@@ -19,9 +20,14 @@ def main():
 
 
     welcome_scr = Welcome(window, FONT_DICT, character)
+    select_scr = CharacterSelection(window, FONT_DICT, [
+        entity.Zapdos,
+        entity.Charizard,
+        entity.Pidgeot,
+    ])
     game_scr = Game(window, FONT_DICT)
 
-    screens = [welcome_scr, game_scr]
+    screens = [welcome_scr, select_scr, game_scr]
     active_idx = 0
 
     running = True
