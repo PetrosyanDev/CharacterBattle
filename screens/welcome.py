@@ -17,5 +17,5 @@ class Welcome(Screen):
         prompt = self.fonts["H3"].render("Press Enter to Begin", True, colors.BLACK_50)
         self.window.blit(prompt, (self.window.get_width()/2 - prompt.get_width()/2, 250 + header.get_height()))
 
-        zap_img = pygame.image.load(self.char.frames[0])
-        self.window.blit(zap_img, (0,0))
+        # zap_img = pygame.image.load(self.char.frames[0])
+        # self.window.blit(zap_img, (0,0))

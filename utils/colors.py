@@ -4,7 +4,7 @@ BACKGROUND = (255, 255, 255)
 
 # Primary Colors
 PRIMARY = (60, 110, 113)
-SECONDARY = (40, 75, 99)
+SECONDARY = (182, 170, 201)
 
 # Basic Colors
 RED = (255, 0, 0)

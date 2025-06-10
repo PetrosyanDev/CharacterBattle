@@ -4,7 +4,8 @@ import utils.colors as colors
 
 
 class CharacterSelection(Screen):
-    CARD_SIZE = (260, 360)
+
+    CARD_SIZE = (300, 400)
     IMAGE_SIZE = (150, 150)
 
     def __init__(self, window, fonts, characters):
@@ -22,13 +23,21 @@ class CharacterSelection(Screen):
 
     def render(self):
         self.window.fill(colors.BACKGROUND)
+
+        # Add header
         header = self.fonts["H2"].render("Choose Your Character", True, colors.PRIMARY)
         header_x = self.window.get_width() / 2 - header.get_width() / 2
         self.window.blit(header, (header_x, 40))
 
+
+        # Add cards
         total_width = len(self.characters) * self.CARD_SIZE[0] + (len(self.characters) - 1) * 40
         start_x = (self.window.get_width() - total_width) / 2
-        y = 120
+        y = 160
+
+        card_w = self.window.get_width() / 3 - 80
+        card_h = self.window.get_height() - y - 60
+        self.CARD_SIZE = (card_w, card_h)
 
         for idx, char in enumerate(self.characters):
             x = start_x + idx * (self.CARD_SIZE[0] + 40)
@@ -56,7 +65,7 @@ class CharacterSelection(Screen):
             btn_rect.centerx = card_rect.centerx
             btn_rect.bottom = card_rect.bottom - 20
             pygame.draw.rect(self.window, colors.PRIMARY, btn_rect, border_radius=8)
-            btn_text = self.fonts["H4"].render("Choose Character", True, colors.WHITE)
+            btn_text = self.fonts["H4"].render("Pick", True, colors.WHITE)
             btn_text_x = btn_rect.centerx - btn_text.get_width() / 2
             btn_text_y = btn_rect.centery - btn_text.get_height() / 2
             self.window.blit(btn_text, (btn_text_x, btn_text_y))
