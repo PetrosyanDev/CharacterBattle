@@ -12,6 +12,7 @@ class CharacterSelection(Screen):
         super().__init__(window, fonts)
         self.characters = characters
         self.images = []
+        self.pick_buttons = []
         for char in characters:
             if char.frames:
                 img = pygame.image.load(char.frames[0])
@@ -20,6 +21,15 @@ class CharacterSelection(Screen):
                 img = pygame.Surface(self.IMAGE_SIZE)
                 img.fill(colors.BLACK_25)
             self.images.append(img)
+
+        self.selected_character = None
+
+    def handle_event(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            mouse_pos = event.pos
+            for idx, btn_rect in enumerate(self.pick_buttons):
+                if btn_rect.collidepoint(mouse_pos):
+                    self.selected_character = self.characters[idx]
 
     def render(self):
         self.window.fill(colors.BACKGROUND)
@@ -38,6 +48,8 @@ class CharacterSelection(Screen):
         card_w = self.window.get_width() / 3 - 80
         card_h = self.window.get_height() - y - 60
         self.CARD_SIZE = (card_w, card_h)
+
+        self.pick_buttons = []
 
         for idx, char in enumerate(self.characters):
             x = start_x + idx * (self.CARD_SIZE[0] + 40)
@@ -69,4 +81,6 @@ class CharacterSelection(Screen):
             btn_text_x = btn_rect.centerx - btn_text.get_width() / 2
             btn_text_y = btn_rect.centery - btn_text.get_height() / 2
             self.window.blit(btn_text, (btn_text_x, btn_text_y))
+
+            self.pick_buttons.append(btn_rect)
 

@@ -25,7 +25,7 @@ def main():
         entity.Charizard,
         entity.Pidgeot,
     ])
-    game_scr = Game(window, FONT_DICT)
+    game_scr = Game(window, FONT_DICT, None, None)
 
     screens = [welcome_scr, select_scr, game_scr]
     active_idx = 0
@@ -53,6 +53,14 @@ def main():
 
             # let the active screen handle input if you expand later
             screens[active_idx].handle_event(event)
+        
+        # Check if user selected a character
+        if active_idx == 1:
+            selected = select_scr.selected_character
+            if selected:
+                game_scr = Game(window, FONT_DICT, selected, None)
+                screens[2] = game_scr
+                active_idx = 2
 
         # update & draw
         screens[active_idx].update()
