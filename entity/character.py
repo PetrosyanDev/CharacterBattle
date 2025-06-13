@@ -2,7 +2,7 @@ from .ability import Ability
 
 
 class Character:
-    def __init__(self, name, elements, max_hp, atk, defense, frames=[]):
+    def __init__(self, name, elements, max_hp, atk, defense, image=[]):
         self.name = name  # "Zapdos"
         self.elements = elements  # ["ELECTRIC", "FLYING"]
         self.max_hp = max_hp  # 200
@@ -10,7 +10,7 @@ class Character:
         self.atk = atk  # 185
         self.defense = defense  # 178
         self.abilities = []
-        self.frames = frames  # ["./assets/zapdos_1.png"]
+        self.image = image  # ["./assets/zapdos_1.png"]
 
 
     def take_damage(self, damage):

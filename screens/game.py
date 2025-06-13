@@ -15,13 +15,13 @@ class Game(Screen):
         self.winner = ''
 
         # load images
-        if not self.player or not self.player.frames or not self.enemy or not self.enemy.frames:
+        if not self.player or not self.player.image or not self.enemy or not self.enemy.image:
             return
 
-        img = pygame.image.load(self.player.frames[0]).convert_alpha()
+        img = pygame.image.load(self.player.image).convert_alpha()
         self.player_img = pygame.transform.scale(img, (450, 450))
 
-        img = pygame.image.load(self.enemy.frames[0]).convert_alpha()
+        img = pygame.image.load(self.enemy.image).convert_alpha()
         self.enemy_img = pygame.transform.scale(img, (450, 450))
 
     def handle_event(self, event):
@@ -47,7 +47,7 @@ class Game(Screen):
         self.message = text
         self.render()
         pygame.display.update()
-        pygame.time.delay(800)
+        pygame.time.delay(1600)
         self.message = ''
 
     def render(self):
@@ -55,8 +55,8 @@ class Game(Screen):
         self.window.fill(colors.BACKGROUND)
 
         # HP bars
-        hp1 = self.fonts['H3'].render(f"{self.player.name} HP: {self.player.current_hp}", True, colors.PRIMARY)
-        hp2 = self.fonts['H3'].render(f"{self.enemy.name} HP: {self.enemy.current_hp}", True, colors.RED)
+        hp1 = self.fonts['H4'].render(f"{self.player.name} HP: {self.player.current_hp}", True, colors.PRIMARY)
+        hp2 = self.fonts['H4'].render(f"{self.enemy.name} HP: {self.enemy.current_hp}", True, colors.PRIMARY)
         self.window.blit(hp1, (20, 20))
         self.window.blit(hp2, (w - hp2.get_width() - 20, 20))
 
@@ -68,7 +68,7 @@ class Game(Screen):
 
         # message
         if self.message:
-            msg = self.fonts['H3'].render(self.message, True, colors.RED)
+            msg = self.fonts['H4'].render(self.message, True, colors.RED)
             self.window.blit(msg, ((w - msg.get_width())//2, 100))
 
         # buttons with accuracy & power
@@ -76,17 +76,17 @@ class Game(Screen):
             self.buttons = []
             count = len(self.player.abilities)
             btn_w = (w - 20*(count+1)) // count
-            y = h - 60 - 20
+            y = h - 68 - 20
             for i, atk in enumerate(self.player.abilities):
                 x = 20 + i * (btn_w + 20)
-                rect = pygame.Rect(x, y, btn_w, 60)
+                rect = pygame.Rect(x, y, btn_w, 68)
                 pygame.draw.rect(self.window, colors.PRIMARY, rect, border_radius=8)
                 # name
-                name = self.fonts['H5'].render(atk.name, True, colors.WHITE)
-                self.window.blit(name, (x+5, y+5))
+                name = self.fonts['H4'].render(atk.name, True, colors.WHITE)
+                self.window.blit(name, (x+10, y+10))
                 # stats
-                stats = self.fonts['P'].render(f"Acc:{atk.accuracy}% Pow:{atk.power}", True, colors.WHITE)
-                self.window.blit(stats, (x+5, y+30))
+                stats = self.fonts['H5'].render(f"Acc:{atk.accuracy}% Pow:{atk.power}", True, colors.BLACK_25)
+                self.window.blit(stats, (x+10, y+40))
                 self.buttons.append(rect)
 
         # winner message

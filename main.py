@@ -50,7 +50,7 @@ def main():
         
         # Check if user selected a character
         if active_idx == 1:
-            selected = select_scr.selected_character
+            selected = select_scr.selected
             if selected:
                 options = [c for c in characters if c != selected]
                 enemy = random.choice(options)
