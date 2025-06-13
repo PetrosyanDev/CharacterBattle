@@ -13,7 +13,7 @@ def main():
     FONT_DICT = fonts.load_fonts()
 
     SCREEN_SIZE = (1280, 720)
-    window = pygame.display.set_mode(SCREEN_SIZE, pygame.RESIZABLE)
+    window = pygame.display.set_mode(SCREEN_SIZE)
     pygame.display.set_caption("Character Battle")
 
     clock = pygame.time.Clock()
@@ -39,16 +39,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.VIDEORESIZE:
-                    new_width = event.w
-                    new_height = event.h
-
-                    if new_width < SCREEN_SIZE[0]:
-                        new_width = SCREEN_SIZE[0]
-                    if new_height < SCREEN_SIZE[1]:
-                        new_height = SCREEN_SIZE[1]
-
-                    window = pygame.display.set_mode((new_width, new_height), pygame.RESIZABLE)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
                     running = False

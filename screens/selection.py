@@ -58,6 +58,11 @@ class CharacterSelection(Screen):
             pygame.draw.rect(self.window, colors.BLACK_50, shadow_rect, border_radius=15)
             pygame.draw.rect(self.window, colors.SECONDARY, card_rect, border_radius=15)
 
+
+            name_text = self.fonts["H4"].render(f'HP: {char.max_hp}', True, colors.BLACK_75)
+            name_x = card_rect.centerx - name_text.get_width() / 2
+            self.window.blit(name_text, (name_x, card_rect.top + 20))
+
             img_rect = pygame.Rect(0, 0, *self.IMAGE_SIZE)
             img_rect.centerx = card_rect.centerx
             img_rect.top = card_rect.top + 20
