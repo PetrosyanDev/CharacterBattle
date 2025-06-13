@@ -3,7 +3,7 @@
 ## Contributors
 
 -   Erik Petrosyan
--   Dylan Abata
+-   Dylan Abat
 -   Sarankan Sothinathan
 
 ## Project Overview
