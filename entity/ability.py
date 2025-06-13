@@ -16,7 +16,7 @@ class Ability:
         return int(base_damage)
     
 
-# All Abilities
+# All Abilities.
 
 # Elecrric
 thunder_shock = Ability(name="Thunder Shock", power=20, type="ELECTRIC", accuracy=100)

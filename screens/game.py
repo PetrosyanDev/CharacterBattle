@@ -26,15 +26,15 @@ class Game(Screen):
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and not self.winner:
-            for rect in self.buttons:
+            for i, rect in enumerate(self.buttons):
                 if rect.collidepoint(event.pos):
-                    self._attack(self.player, self.enemy)
+                    self._attack(self.player, self.enemy, i)
                     if not self.winner:
-                        self._attack(self.enemy, self.player)
+                        self._attack(self.enemy, self.player, random.randint(0, len(self.enemy.abilities)-1))
                     break
 
-    def _attack(self, attacker, defender):
-        atk = random.choice(attacker.abilities)
+    def _attack(self, attacker, defender, index):
+        atk = attacker.abilities[index]
         dmg = atk.calculate_damage(attacker, defender)
         if dmg == 0:
             text = f"{attacker.name} missed!"

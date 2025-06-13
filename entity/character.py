@@ -10,7 +10,7 @@ class Character:
         self.atk = atk  # 185
         self.defense = defense  # 178
         self.abilities = []
-        self.image = image  # ["./assets/zapdos_1.png"]
+        self.image = image  # ["./assets/zapdos_1.png"].
 
 
     def take_damage(self, damage):

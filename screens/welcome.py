@@ -14,3 +14,5 @@ class Welcome(Screen):
 
         prompt = self.fonts["H3"].render("Press Enter to Begin", True, colors.BLACK_50)
         self.window.blit(prompt, (self.window.get_width()/2 - prompt.get_width()/2, 250 + header.get_height()))
+
+# .

@@ -1,4 +1,4 @@
-# Character Battle
+# Character Battle!
 
 ## Contributors
 

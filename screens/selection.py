@@ -79,3 +79,5 @@ class CharacterSelection(Screen):
             self.window.blit(pick_txt, (px, py))
 
             self.buttons.append(btn)
+
+# .
