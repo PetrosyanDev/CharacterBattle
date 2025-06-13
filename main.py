@@ -1,4 +1,5 @@
 import pygame
+import random
 from utils import fonts
 from screens.welcome import Welcome
 from screens.selection import CharacterSelection
@@ -20,11 +21,12 @@ def main():
 
 
     welcome_scr = Welcome(window, FONT_DICT, character)
-    select_scr = CharacterSelection(window, FONT_DICT, [
+    characters = [
         entity.Zapdos,
         entity.Charizard,
         entity.Pidgeot,
-    ])
+    ]
+    select_scr = CharacterSelection(window, FONT_DICT, characters)
     game_scr = Game(window, FONT_DICT, None, None)
 
     screens = [welcome_scr, select_scr, game_scr]
@@ -58,7 +60,9 @@ def main():
         if active_idx == 1:
             selected = select_scr.selected_character
             if selected:
-                game_scr = Game(window, FONT_DICT, selected, None)
+                options = [c for c in characters if c != selected]
+                enemy = random.choice(options)
+                game_scr = Game(window, FONT_DICT, selected, enemy)
                 screens[2] = game_scr
                 active_idx = 2
 
