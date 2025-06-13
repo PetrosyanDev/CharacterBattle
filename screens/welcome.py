@@ -1,4 +1,3 @@
-# screens/welcome.py
 from .base import Screen
 import utils.colors as colors
 
