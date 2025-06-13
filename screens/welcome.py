@@ -1,5 +1,4 @@
 # screens/welcome.py
-import pygame
 from .base import Screen
 import utils.colors as colors
 
