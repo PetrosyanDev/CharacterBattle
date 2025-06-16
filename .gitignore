@@ -1,0 +1,5 @@
+**/.DS_Store
+**/*.code-workspace
+__pycache__
+**/secrets
+all.code-workspace
